@@ -1,10 +1,11 @@
+import math
 from flask import Flask,render_template,request
 from weather import getcurrentweather
 from waitress import serve
 
 app=Flask(__name__)
 def fahrenheit_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * 5 / 9
+    return math.ceil((fahrenheit - 32) * 5 / 9)
 @app.route('/')
 @app.route('/index')
 def index():
