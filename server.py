@@ -65,16 +65,15 @@ def getweather():
         return render_template("not-found.html")
 
     temperature_kelvin = weatherdata['data']['values']['temperature']
-    temperature_celsius = kelvin_to_celsius(temperature_kelvin)
+    
     
     return render_template("weather.html",
                            title=weatherdata["location"]["name"],
                            status=weatherdata["data"]["values"]["weatherCode"],
-                           temp=temperature_celsius)
+                           temp=temperature_kelvin)
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8000)
 
     
-if __name__ == "__main__":
-    serve(app,host="0.0.0.0",port=8000)
+
