@@ -16,7 +16,7 @@ def getweather():
     weatherdata=getcurrentweather(city)
     if not weatherdata['cod'] == 200:
         return render_template("not-found.html")
-    current_temp = weatherdata['current']['temp']
+    
     return render_template("weather.html",
                        
     title= weatherdata["name"],
