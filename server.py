@@ -16,12 +16,16 @@ def getweather():
     weatherdata=getcurrentweather(city)
     if not weatherdata['cod'] == 200:
         return render_template("not-found.html")
+    current_temp = weatherdata['current']['temp']
     return render_template("weather.html",
-                           
-    title= weatherdata["name"],
-    status= weatherdata["weather"][0]["description"],
-    temp = fahrenheit_to_celsius(weatherdata['main']['temp_max']),
-    feels_like = fahrenheit_to_celsius(weatherdata['main']['feels_like'])
+        title=weatherdata["name"],
+        status=weatherdata["weather"][0]["description"],
+        temp=fahrenheit_to_celsius(current_temp),  # Convert current temperature to Celsius
+        feels_like=fahrenheit_to_celsius(weatherdata['current']['feels_like']))                
+    # title= weatherdata["name"],
+    # status= weatherdata["weather"][0]["description"],
+    # temp = fahrenheit_to_celsius(weatherdata['main']['temp_max']),
+    # feels_like = fahrenheit_to_celsius(weatherdata['main']['feels_like'])
   #   temp= f"{ weatherdata['main']['temp']:.1f}",
   # feels_like = f"{weatherdata['main']['feels_like']:.1f}"
 
