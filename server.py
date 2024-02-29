@@ -23,9 +23,6 @@ def getweather():
     title= weatherdata["name"],
     status= weatherdata["weather"][0]["description"],
     temp= temp_max_celsius,
-  feels_like = feels_like_celsius"
-
-
-    )
+  feels_like = feels_like_celsius)
 if __name__ == "__main__":
     serve(app,host="0.0.0.0",port=3000)
