@@ -20,8 +20,8 @@ def getweather():
     return render_template("weather.html",
         title=weatherdata["name"],
         status=weatherdata["weather"][0]["description"],
-        temp=fahrenheit_to_celsius(current_temp),  # Convert current temperature to Celsius
-        feels_like=fahrenheit_to_celsius(weatherdata['current']['feels_like']))                
+        temp=fahrenheit_to_celsius(current_temp),  
+        feels_like=fahrenheit_to_celsius(weatherdata['current']['feels_like']))               
     # title= weatherdata["name"],
     # status= weatherdata["weather"][0]["description"],
     # temp = fahrenheit_to_celsius(weatherdata['main']['temp_max']),
@@ -30,6 +30,6 @@ def getweather():
   # feels_like = f"{weatherdata['main']['feels_like']:.1f}"
 
 
-    )
+    
 if __name__ == "__main__":
     serve(app,host="0.0.0.0",port=8000)
