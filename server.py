@@ -61,7 +61,7 @@ def getweather():
     city = request.args.get('city')
     weatherdata = getcurrentweather(city)
     
-    if 'data' not in weatherdata or 'timelines' not in weatherdata['data']:
+    if 'data' not in weatherdata or 'values' not in weatherdata['data']:
         return render_template("not-found.html")
     
     parsed_data = json.loads(weatherdata['data'])
