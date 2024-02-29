@@ -14,7 +14,7 @@ def index():
 @app.route('/weather')
 def getweather():
      city = request.args.get('city')
-    weatherdata = getcurrentweather(city)
+     weatherdata = getcurrentweather(city)
     
     if 'data' not in weatherdata or 'values' not in weatherdata['data']:
         return render_template("not-found.html")
