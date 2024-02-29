@@ -63,8 +63,10 @@ def getweather():
     
     if 'data' not in weatherdata or 'values' not in weatherdata['data']:
         return render_template("not-found.html")
-
-    temperature_kelvin = weatherdata['data']['values']['temperature']
+    latest_entry = weatherdata['timelines']['minutely'][-1]
+    
+    # temperature_kelvin = weatherdata['data']['values']['temperature']
+    temperature_kelvin = latest_entry['values']['temperature']
     
     
     return render_template("weather.html",
