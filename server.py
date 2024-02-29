@@ -20,12 +20,12 @@
 #         return render_template("not-found.html")
 
 #     temperature_kelvin = weatherdata['data']['values']['temperature']
-#     temperature_celsius = kelvin_to_celsius(temperature_kelvin)
+#     
     
 #     return render_template("weather.html",
 #                            title=weatherdata["location"]["name"],
 #                            status=weatherdata["data"]["values"]["weatherCode"],
-#                            temp=temperature_celsius)
+#                            temp=temperature_kelvin)
     # city=request.args.get('city')
     # weatherdata=getcurrentweather(city)
     # if not weatherdata['cod'] == 200:
