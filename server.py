@@ -21,7 +21,7 @@ def getweather():
                        
     title= weatherdata["name"],
     status= weatherdata["weather"][0]["description"],
-    temp = fahrenheit_to_celsius(weatherdata['main']['temp_max']),
+    temp = fahrenheit_to_celsius(weatherdata['main']['temp']),
     feels_like = fahrenheit_to_celsius(weatherdata['main']['feels_like']))
   #   temp= f"{ weatherdata['main']['temp']:.1f}",
   # feels_like = f"{weatherdata['main']['feels_like']:.1f}"
