@@ -5,7 +5,7 @@ from waitress import serve
 
 app=Flask(__name__)
 def fahrenheit_to_celsius(fahrenheit):
-    return round(fahrenheit-273.15, 2)
+    return round(fahrenheit -273.15, 2)
 @app.route('/')
 @app.route('/index')
 def index():
@@ -21,7 +21,7 @@ def getweather():
                        
     title= weatherdata["name"],
     status= weatherdata["weather"][0]["description"],
-    temp = fahrenheit_to_celsius(weatherdata['main']['temp']),
+    temp = fahrenheit_to_celsius(weatherdata['main']['temp_max']),
     feels_like = fahrenheit_to_celsius(weatherdata['main']['feels_like']))
   #   temp= f"{ weatherdata['main']['temp']:.1f}",
   # feels_like = f"{weatherdata['main']['feels_like']:.1f}"
