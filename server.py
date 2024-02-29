@@ -39,8 +39,8 @@
     # feels_like = fahrenheit_to_celsius(weatherdata['main']['feels_like']))
   #   temp= f"{ weatherdata['main']['temp']:.1f}",
   # feels_like = f"{weatherdata['main']['feels_like']:.1f}"
-
 import math
+import json
 from flask import Flask, render_template, request
 from weather import getcurrentweather
 from waitress import serve
@@ -61,22 +61,23 @@ def getweather():
     city = request.args.get('city')
     weatherdata = getcurrentweather(city)
     
-    if 'data' not in weatherdata or 'values' not in weatherdata['data']:
+    if 'data' not in weatherdata or 'timelines' not in weatherdata['data']:
         return render_template("not-found.html")
-    parsed_data = json.loads(weatherdata)
+    
+    parsed_data = json.loads(weatherdata['data'])
     latest_entry = parsed_data['timelines']['minutely'][-1]
     
-    # temperature_kelvin = weatherdata['data']['values']['temperature']
     temperature_kelvin = latest_entry['values']['temperature']
-    
+    temperature_celsius = kelvin_to_celsius(temperature_kelvin)
     
     return render_template("weather.html",
                            title=weatherdata["location"]["name"],
-                           status=weatherdata["data"]["values"]["weatherCode"],
-                           temp=temperature_kelvin)
+                           status=latest_entry["values"]["weatherCode"],
+                           temp=temperature_celsius)
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8000)
+
 
     
 
