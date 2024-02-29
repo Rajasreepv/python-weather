@@ -5,8 +5,8 @@ from waitress import serve
 
 app=Flask(__name__)
 def fahrenheit_to_celsius(fahrenheit):
-    celc=fahrenheit - 273.15
-    return round(celc,2)
+    celsius = (fahrenheit - 32) * 5 / 9
+    return round(celsius, 2)
 @app.route('/')
 @app.route('/index')
 def index():
